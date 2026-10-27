@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8">
+<style>
+:root{--bd:#e6e6ea;--mut:#8a8a93;--txt:#1d1d22;--pur:#7a5af8;--red:#e5484d;--amb:#f5a524;--grn:#30a46c;--blue:#3b82f6;--bg2:#f6f6f8}
+*{box-sizing:border-box}body{margin:0;background:#eef0f3;font:13px/1.5 -apple-system,"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif;color:var(--txt);padding:18px}
+.card{width:1060px;background:#fff;border-radius:12px;box-shadow:0 4px 24px rgba(0,0,0,.08);overflow:hidden;position:relative}
+.head{display:flex;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--bd)}
+.sel{border:1px solid var(--bd);border-radius:7px;padding:4px 10px;font-weight:600}.sel small{color:var(--mut);font-weight:400;margin-left:6px}
+.btn{border:1px solid var(--bd);border-radius:7px;padding:3px 10px;background:#fff;font-size:12.5px}
+.ghost{color:#444;padding:3px 6px}
+.flex{flex:1}
+.pill{border-radius:8px;padding:2px 9px;font-size:12px}
+.p1{background:#ece8ff}.p2{background:#fff1dc}.p3{background:#dcf5e7}
+.sbx{border:1px solid #c9bdfc;background:#f4f1ff;color:#5b3fd6;border-radius:8px;padding:3px 10px;font-weight:600;font-size:12.5px}
+.sbx i{font-style:normal;color:#e5484d;margin-left:4px}
+.body{display:flex;min-height:600px}
+.nav{width:210px;border-right:1px solid var(--bd);padding:10px 8px}
+.ni{display:flex;align-items:center;padding:7px 10px;border-radius:8px;margin-bottom:3px;border-left:3px solid var(--c)}
+.ni b{display:block;font-size:13.5px}.ni span{font-size:11.5px;color:var(--mut)}
+.ni .tg{margin-left:auto;width:28px;height:16px;border-radius:9px;background:var(--c);position:relative}.ni .tg:after{content:"";position:absolute;right:2px;top:2px;width:12px;height:12px;border-radius:50%;background:#fff}
+.ni.on{background:#f3f1ff}.ni.on b{color:#5b3fd6}
+.main{flex:1;padding:16px 22px}
+h2{font-size:15px;margin:0 0 4px;display:flex;align-items:center;gap:8px}h2 small{font-weight:400;color:var(--mut);font-size:12px}
+.new{background:#ffe9ea;color:var(--red);border-radius:7px;font-size:11px;padding:1px 7px;font-weight:600}
+.desc{color:#555;font-size:12.5px;margin:2px 0 12px}
+.seg{display:inline-flex;border:1px solid var(--bd);border-radius:8px;padding:2px;gap:2px;margin-bottom:6px}
+.seg div{padding:5px 14px;border-radius:6px;font-size:12.5px;color:#555}.seg .on{background:#f3f1ff;color:#5b3fd6;font-weight:600;box-shadow:0 0 0 1px #c9bdfc inset}
+.seg small{color:var(--mut);font-weight:400}
+.gh{display:flex;align-items:center;gap:8px;margin:16px 0 6px;font-weight:600;font-size:12.5px;color:#444}.gh:after{content:"";flex:1;height:1px;background:var(--bd)}
+.gh em{font-style:normal;font-weight:400;color:var(--mut)}
+.row{display:flex;align-items:center;gap:10px;padding:8px 10px;border:1px solid var(--bd);border-radius:9px;margin-bottom:6px}
+.row .nm{font-weight:600}.row .sub{font-size:11.5px;color:var(--mut)}
+.chip{font-size:11px;border-radius:6px;padding:1px 6px;background:var(--bg2);color:#555;font-family:ui-monospace,Menlo,monospace}
+.tag{font-size:11px;border-radius:6px;padding:1px 7px}
+.t-ok{background:#dcf5e7;color:#1a7f4b}.t-no{background:#ffe9ea;color:#c92a2f}.t-lock{background:#eef0f3;color:#666}.t-ai{background:#e8f0ff;color:#2f5bd3}.t-warn{background:#fff1dc;color:#a35b00}
+.sw{margin-left:auto;display:inline-flex;border:1px solid var(--bd);border-radius:7px;overflow:hidden;font-size:12px}
+.sw span{padding:2px 9px}.sw .a{background:#dcf5e7;color:#1a7f4b;font-weight:600}.sw .d{background:#ffe9ea;color:#c92a2f;font-weight:600}
+.exp{margin:-2px 0 8px 22px;padding:6px 10px;border-left:2px solid var(--bd);display:flex;flex-wrap:wrap;gap:6px}
+table{width:100%;border-collapse:collapse;font-size:12.5px}th{text-align:left;color:var(--mut);font-weight:500;padding:5px 6px;border-bottom:1px solid var(--bd)}td{padding:6px;border-bottom:1px solid #f0f0f3}
+.link{color:#2f5bd3}
+.ov{position:absolute;inset:0;background:rgba(20,20,30,.28);display:flex;align-items:center;justify-content:center;gap:22px}
+.dlg{width:470px;background:#fff;border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.2);padding:16px 18px}
+.dlg h3{margin:0 0 8px;font-size:14.5px}
+.box{background:var(--bg2);border-radius:8px;padding:8px 10px;font-size:12px;margin:8px 0}
+.code{font-family:ui-monospace,Menlo,monospace;font-size:11.5px;background:#1f2330;color:#d7dae0;border-radius:8px;padding:8px 10px;white-space:pre;margin:8px 0}
+.ck{display:flex;gap:7px;font-size:12.5px;margin:5px 0}.ck i{width:14px;height:14px;border:1.5px solid #999;border-radius:3px;flex:none;margin-top:3px}
+.ck i.on{background:var(--pur);border-color:var(--pur)}
+.acts{display:flex;justify-content:flex-end;gap:8px;margin-top:12px}
+.pri{background:var(--pur);color:#fff;border-color:var(--pur)}.dng{background:var(--red);color:#fff;border-color:var(--red);opacity:.55}
+.note{font-size:11.5px;color:var(--mut)}
+</style></head><body>
+<div class="card">
+  <div class="head">
+    <div class="sel">唐团团<small>角色卡 ▾</small></div>
+    <span class="btn">保存</span><span class="ghost">另存为…</span><span class="ghost">取消预设</span>
+    <div class="flex"></div>
+    <span class="sbx">沙盒 · 受控<i>拦 3</i></span>
+    <span class="pill p1">首轮 <b>+2,740</b> tok</span><span class="pill p2">每轮 <b>+100</b> tok</span><span class="pill p3">缓存 —</span>
+    <span class="ghost">?</span><span class="ghost">📌</span><span class="ghost">✕</span>
+  </div>
+  <div class="body">
+    <div class="nav">
+      <div class="ni" style="--c:#e24c7a"><div><b>角色卡</b><span>唐团团 · 带工具</span></div><div class="tg"></div></div>
+      <div class="ni" style="--c:#7a5af8"><div><b>系统提示</b><span>追加 · ≈2,187 tok</span></div><div class="tg"></div></div>
+      <div class="ni" style="--c:#8b5a2b"><div><b>工作区说明</b><span>原样 · AGENTS.md</span></div><div class="tg"></div></div>
+      <div class="ni" style="--c:#f5a524"><div><b>每轮注入</b><span>一直 · ≈100 tok/轮</span></div><div class="tg"></div></div>
+      <div class="ni" style="--c:#3b82f6"><div><b>开场对话</b><span>1 条 · 写入历史</span></div><div class="tg"></div></div>
+      <div class="ni on" style="--c:#5b3fd6"><div><b>会话沙盒</b><span>受控 · 拦 3 · 待归属 1</span></div><div class="tg"></div></div>
+      <div class="ni" style="--c:#999"><div><b>用量与缓存</b><span>只读</span></div></div>
+    </div>
+    <div class="main">
+      <h2>会话沙盒 <small>原「改写注入内容」</small><span class="new">替代纯净模式</span></h2>
+      <div class="desc">本插件自己的东西（角色卡、系统提示、每轮注入、开场对话……）永远放行；别处送进模型的内容按档位和规则处理。工具结果、压缩、回合协议等“功能通道”不拦。</div>
+      <div class="seg"><div>观察 <small>全放行·只记录</small></div><div class="on">受控 <small>第三方默认拦</small></div><div>严格 <small>= 旧纯净模式</small></div></div>
+      <div class="note">档位只决定“没写规则的来源”怎么办；下面每个来源包都能单独改。本会话生效，「⭐ 全局记住」后新会话也照此提前拦。</div>
+
+      <div class="gh">来源包 <em>按包放行 / 拦截，避免拦一半把功能拦坏</em></div>
+      <div class="row"><span>🔒</span><div><div class="nm">本插件 · dsh-prefill</div><div class="sub">prefill:* 的段 / 上下文 / 消息</div></div><span class="tag t-lock">恒放行</span></div>
+      <div class="row"><span>▸</span><div><div class="nm">DSH 核心 · 系统提示</div><div class="sub">harness:identity、harness:tools、harness:safety … 7 段</div></div><span class="sw"><span class="a">放行</span><span>拦截</span></span></div>
+      <div class="row"><span>▸</span><div><div class="nm">DSH 核心 · 运行时上下文</div><div class="sub">工作目录、文件策略、审批策略（工作目录为 required）</div></div><span class="sw"><span class="a">放行</span><span>拦截</span></span></div>
+      <div class="row"><span>▾</span><div><div class="nm">Agent Teams <span class="tag t-ai">AI 溯源 · 你已确认</span></div><div class="sub">@deepseek-ai/dsh-experimental-agent-team-profile</div></div><span class="tag t-warn">拦截后队友消息不会送达</span><span class="sw" style="margin-left:8px"><span>放行</span><span class="d">拦截</span></span><span class="btn">⭐ 全局记住</span></div>
+      <div class="exp"><span class="chip">段 team:policy</span><span class="chip">上下文 team:identity</span><span class="chip">消息 agent-message</span><span class="chip">工具 send_message 等 6 个</span><span class="note">单条可展开另设</span></div>
+      <div class="row" style="border-color:#f5c27a;background:#fffaf2"><span>?</span><div><div class="nm">未归属 · 1 条</div><div class="sub">上下文 <span class="chip">mem:recall</span>，作用域内注册，不认识它的插件</div></div><span class="tag t-no">受控档：已拦</span><span class="btn pri" style="margin-left:auto">AI 溯源</span><span class="btn">手动挂到…</span></div>
+
+      <div class="gh">本会话审计 <em>进了模型、或被拦下的注入</em></div>
+      <table>
+        <tr><th>轮</th><th>来源</th><th>名称</th><th>处理</th><th></th></tr>
+        <tr><td>3</td><td>Agent Teams</td><td><span class="chip">team:identity</span></td><td><span class="tag t-no">注册表层已拦</span></td><td></td></tr>
+        <tr><td>3</td><td>未归属</td><td><span class="chip">mem:recall</span></td><td><span class="tag t-no">注册表层已拦</span></td><td><span class="link">溯源</span></td></tr>
+        <tr><td>4</td><td>DSH 核心</td><td><span class="chip">developer:tool-registry</span></td><td><span class="tag t-warn">直写会话 · 已进模型</span></td><td><span class="link">事后改写… ⚠</span></td></tr>
+        <tr><td>4</td><td>DSH 核心</td><td><span class="chip">compact-checkpoint</span></td><td><span class="tag t-lock">功能通道 · 不处理</span></td><td></td></tr>
+      </table>
+    </div>
+  </div>
+  <div class="ov" id="ov" style="display:none">
+    <div class="dlg">
+      <h3>AI 溯源：mem:recall</h3>
+      <div class="note">读本机已装插件的包源码（dsh_plugin_packages 列表），找谁注册了这个名字。</div>
+      <div class="code">@acme/dsh-memory@1.4.0  lib/index.js:212
+  ctx.systemPrompt.context({
+    name: 'mem:recall', order: 50,
+    text: () =&gt; recall(session) })</div>
+      <div class="box">结论：<b>@acme/dsh-memory</b> 的「记忆召回」，每轮把相关历史摘要放进运行时上下文。置信度 <b>高</b>（名字与注册点逐字匹配）。<br>同包还注册了：段 <span class="chip">mem:policy</span>、工具 <span class="chip">memory_search</span></div>
+      <div class="note">插件自报的归属（开放注册接口）只当线索，挂上必须由你确认。</div>
+      <div class="acts"><span class="btn">忽略</span><span class="btn">只挂这一条</span><span class="btn pri">挂到 @acme/dsh-memory（3 项）</span></div>
+    </div>
+    <div class="dlg">
+      <h3>⚠ 事后改写会话：developer:tool-registry</h3>
+      <div class="note">这条是 DSH 在回合里直接写进会话的，没法提前拦；只能在它落盘后用替换操作改掉。</div>
+      <div class="box">改写为：<b>空</b>（模型下一轮起看不到这条工具变更通知）</div>
+      <div class="ck"><i class="on"></i>会改动会话日志，Web 界面、SDK、fork 出的会话都会看到改后的样子；关掉沙盒也不会自动恢复（会保留原文，可手动还原）</div>
+      <div class="ck"><i class="on"></i>可能与压缩、工具增删校验冲突，导致本轮报错或重试</div>
+      <div class="ck"><i></i>会打断前缀缓存，之后几轮更慢、更贵</div>
+      <div class="ck"><i></i>依赖 DSH 内部接口，升级后可能失效；由此产生的问题插件作者不负责</div>
+      <div class="acts"><span class="btn">取消</span><span class="btn dng">我已了解，改写这一条</span></div>
+    </div>
+  </div>
+</div>
+<script>if(location.hash==='#dlg')document.getElementById('ov').style.display='flex'</script>
+</body></html>
